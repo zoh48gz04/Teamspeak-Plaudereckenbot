@@ -8,7 +8,7 @@ except:
 
 
 class pBot:
-    def __init__(self, ip, port, username, password, sid, channellist, cpid):
+    def __init__(self, ip, port, username, password, displayname, sid, channellist, cpid):
         self.ip = ip
         self.port = port
         self.username = username
@@ -16,15 +16,16 @@ class pBot:
         self.sid = sid
         self.channellist = channellist
         self.cpid = cpid
-        self.connect(ip, port, username, password, sid)
+        self.connect(ip, port, username, password, displayname, sid)
 
-    def connect(self, ip, port, username, password, sid):
+    def connect(self, ip, port, username, password, displayname, sid):
         self.teamspeak = PyTS3.ServerQuery(ip, port)
         if self.teamspeak.connect() == False:
             print "Could not connect"
             os._exit(7)
         self.teamspeak.command("login " + username + " " + password)
         self.teamspeak.command("use " + str(sid))
+        self.teamspeak.command("clientupdate client_nickname=" + self.teamspeak.string2escaping(displayname))
 
     def getUserInfo(self):
         self.userInfo = self.teamspeak.command("clientlist")
@@ -43,13 +44,13 @@ class pBot:
     def addChannel(self):
         #print str(self.channellist[len(self.channellist) - 1])
         y = str("channelcreate channel_name=Plauderecke\s"
-         + str(len(self.channellist) + 1) + " channel_order="
-         + str(self.channellist[len(self.channellist) - 1]) + "")
+                + str(len(self.channellist) + 1) + " channel_order="
+                + str(self.channellist[len(self.channellist) - 1]) + "")
         print y
         x = self.teamspeak.command("channelcreate channel_name=Plauderecke\s"
-        + str(len(self.channellist) + 1) + " channel_order="
-        + str(self.channellist[len(self.channellist) - 1]) +
-        " cpid=" + str(self.cpid) + " channel_flag_semi_permanent=1 CHANNEL CODEC")
+                                   + str(len(self.channellist) + 1) + " channel_order="
+                                   + str(self.channellist[len(self.channellist) - 1]) +
+                                   " cpid=" + str(self.cpid) + " channel_flag_semi_permanent=1 CHANNEL CODEC")
         print x
         if isinstance(x['cid'], int):
             self.channellist.append(x['cid'])

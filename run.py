@@ -5,12 +5,13 @@ IP = ""
 PORT = 10011
 USERNAME = "serveradmin"
 PASSWORD = ""
+DISPLAYNAME = "Plauderecken-Bot"
 SID = 1
-ORIGINALCHANNELS = []
-CHANNELLIST = [] # == ORIGINALCHANNELS
+ORIGINALCHANNELS = [151, 152, 153]
+CHANNELLIST = [151, 152, 153] # == ORIGINALCHANNELS
 CPID = 54
-pBot = plaudereckenbot.pBot(IP, PORT, USERNAME, PASSWORD,
-     SID, CHANNELLIST, CPID)
+pBot = plaudereckenbot.pBot(IP, PORT, USERNAME, PASSWORD, DISPLAYNAME,
+    SID, CHANNELLIST, CPID)
 while 1:
     emptyRooms = 0
     pBot.getUserInfo()
@@ -25,7 +26,7 @@ while 1:
             emptyRooms = emptyRooms + 1
     print "ChanUserCount: " + str(channelUserCount)
     print "lenSetUserCount: " + str(len(set(channelUserCount)) == 1
-        and channelUserCount[0] == True)
+    and channelUserCount[0] == True)
     if len(set(channelUserCount)) == 1 and channelUserCount[0] == True:
         pBot.addChannel()
     print "emptyRooms: " + str(emptyRooms)
