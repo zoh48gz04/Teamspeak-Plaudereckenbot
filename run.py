@@ -1,15 +1,34 @@
 #!/usr/bin/python
 import plaudereckenbot
 import time
+
+# IP of the TS3 server
 IP = ""
+
+# Query port of the TS3 server
 PORT = 10011
+
+# Username for the query
 USERNAME = "serveradmin"
+
+# Password for the user specified above
 PASSWORD = ""
-DISPLAYNAME = "Plauderecken-Bot"
+
+# Displayname. Name visibible to the users
+DISPLAYNAME = ""
+
+# The ID of the virtual server to run on
 SID = 1
-ORIGINALCHANNELS = [151, 152, 153]
-CHANNELLIST = [151, 152, 153] # == ORIGINALCHANNELS
-CPID = 54
+
+# Which channels should be treated as the original channels (Channel ids)
+CHANNELLIST = [1, 2, 3]
+
+# Channel ID of the parent channel. Created channels are children of this
+CPID = 1
+
+#########################################################################
+
+
 pBot = plaudereckenbot.pBot(IP, PORT, USERNAME, PASSWORD, DISPLAYNAME,
     SID, CHANNELLIST, CPID)
 while 1:
