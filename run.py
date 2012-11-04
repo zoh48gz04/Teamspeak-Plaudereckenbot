@@ -15,16 +15,16 @@ USERNAME = "serveradmin"
 PASSWORD = ""
 
 # Displayname. Name visibible to the users
-DISPLAYNAME = "Plauderecken-Bot"
+DISPLAYNAME = ""
 
 # The ID of the virtual server to run on
 SID = 1
 
-# Which channels should be treated as the original channels
-CHANNELLIST = [151, 152, 153]
+# Which channels should be treated as the original channels (Channel ids)
+CHANNELLIST = [1, 2, 3]
 
 # Channel ID of the parent channel. Created channels are children of this
-CPID = 54
+CPID = 1
 
 #########################################################################
 
