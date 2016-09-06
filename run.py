@@ -54,5 +54,6 @@ while 1:
             if channelUserCount[i] == 0:
                 if pBot.channellist[i] not in ORIGINALCHANNELS:
                     pBot.delChannel(pBot.channellist[i])
-                    break
+            else:
+                break
     time.sleep(5)
